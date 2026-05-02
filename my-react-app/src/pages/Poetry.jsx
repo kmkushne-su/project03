@@ -15,7 +15,7 @@ function PoetryAPI() {
 
 // Reference for "useEffect": https://react.dev/reference/react/useEffect (i.e. this is how i used an external system) + import above!
   useEffect(() => {
-    fetch("../public/PoetryFoundationData.csv")
+    fetch("../PoetryFoundationData.csv")
 // Res vs. Response vs. Result: https://developer.mozilla.org/en-US/docs/Web/API/Response/text
 // Using PapaParse: https://www.papaparse.com/ !!! + CSV to JSON Configuration Options: https://www.papaparse.com/docs#csv-to-json
 // Understand CSV to Text (even though this is for Python...): https://www.geeksforgeeks.org/python/response-text-python-requests/
