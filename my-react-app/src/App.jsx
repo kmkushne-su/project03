@@ -8,7 +8,6 @@ import Home from "./pages/Home.jsx";
 import Poetry from "./pages/Poetry.jsx"
 import About from "./pages/About.jsx"
 import Footer from "./components/Footer.jsx"
-
 import logo from './images/logo.png';
 
 import './App.css'
