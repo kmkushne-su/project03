@@ -15,7 +15,7 @@ function PoetryAPI() {
 
 // Reference for "useEffect": https://react.dev/reference/react/useEffect (i.e. this is how i used an external system) + import above!
   useEffect(() => {
-    fetch("../PoetryFoundationData.csv")
+    fetch("/PoetryFoundationData.csv") // ✅ FIXED PATH (was "../public/...")
 // Res vs. Response vs. Result: https://developer.mozilla.org/en-US/docs/Web/API/Response/text
 // Using PapaParse: https://www.papaparse.com/ !!! + CSV to JSON Configuration Options: https://www.papaparse.com/docs#csv-to-json
 // Understand CSV to Text (even though this is for Python...): https://www.geeksforgeeks.org/python/response-text-python-requests/
@@ -25,12 +25,17 @@ function PoetryAPI() {
           header: true,
           skipEmptyLines: true,
         });
+        console.log(result.data); // ✅ DEBUG LOG to verify data is loading
         setData(result.data);
       });
   }, []);
 
 // Understanding how to get the full "area" of intended file: https://stackoverflow.com/questions/43267033/understanding-the-use-of-math-floor-when-randomly-accessing-an-array
   const pickRandomRow = () => {
+    if (data.length === 0) { // ✅ SAFETY CHECK so button doesn't fail silently
+      console.log("Data not loaded yet");
+      return;
+    }
     setRandomRow(data[Math.floor(Math.random() * data.length)]);
   };
 
@@ -64,6 +69,7 @@ function PoetryAPI() {
           border: "#000",
         }}
         onClick={pickRandomRow}
+        disabled={data.length === 0} // ✅ Prevent clicking before data loads
       >
         Poetry Generator
       </Button>
