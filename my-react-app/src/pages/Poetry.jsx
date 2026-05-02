@@ -7,18 +7,19 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 function PoetryAPI() {
 
-// Reference for "useState": https://www.w3schools.com/react/react_usestate.asp
+// Reference for "useState": https://www.w3schools.com/react/react_usestate.asp + Downloaded IST 363 Class Presentation
 
   const [data, setData] = useState([]);
   const [randomRow, setRandomRow] = useState("");
   const [email, setEmail] = useState("");
 
-// Reference for "useEffect": https://react.dev/reference/react/useEffect (i.e. this is how i used an external system)
+// Reference for "useEffect": https://react.dev/reference/react/useEffect (i.e. this is how i used an external system) + import above!
   useEffect(() => {
     fetch("../public/PoetryFoundationData.csv")
+// Res vs. Response vs. Result: https://developer.mozilla.org/en-US/docs/Web/API/Response/text
+// Using PapaParse: https://www.papaparse.com/ !!!
       .then((res) => res.text())
       .then((csvText) => {
-// Using PapaParse: https://www.papaparse.com/ !!!
         const result = Papa.parse(csvText, {
           header: true,
           skipEmptyLines: true,
@@ -31,24 +32,25 @@ function PoetryAPI() {
     setRandomRow(data[Math.floor(Math.random() * data.length)]);
   };
 
+// "e" + Event Notes: https://legacy.reactjs.org/docs/handling-events.html
   const handleSubmit = (e) => {
-// Prevent page reload when submitting the form
+// "e.preventDefault: Prevent page reload when submitting the form (that way the poem stays on the screen!) + https://legacy.reactjs.org/docs/handling-events.html
   e.preventDefault();
 
   const r = randomRow;
 
-// Open default email app with pre-filled subject and body
+// Open default email app with pre-filled subject and body + https://legacy.reactjs.org/docs/handling-events.html
   window.location.href =
 // To prevent the error if there's a strange character or something in the subject or body of the email: https://www.w3schools.com/jsref/jsref_encodeuricomponent.asp
     `mailto:${email}?subject=${encodeURIComponent(`Poem: ${r?.Title || ""}`)}&body=${encodeURIComponent(
-// Because the CSV is a bit messed up, if something does not appear, the question mark allows the program to return the thing as undefined instead of as an error of some sort: https://www.codecademy.com/resources/docs/javascript/optional-chaining
+// Because the CSV is a bit messed up, if something does not appear, the question mark allows the program to return the thing as undefined instead of as an error of some sort and the code does not load at all: https://www.codecademy.com/resources/docs/javascript/optional-chaining
       `${r?.Title || ""} ${r?.Poem || ""} — ${r?.Poet || ""}`
     )}`;
-
+// Input in the email: https://help.cartstack.com/article/42-setemail
   setEmail("");
 };
 
-// Logical Operators: https://www.w3schools.com/js/js_operators.asp
+// Logical Operators Refresher from Earlier Lab: https://www.w3schools.com/js/js_operators.asp ("&&", specifically below)
 
   return (
     <Container className="bodybackground" style={{fontFamily: "'Merriweather', serif"}}>
@@ -111,7 +113,7 @@ function PoetryAPI() {
 export default function PoetryApp() {
   return (
     <>
-      <Container className="bodybackground" style={{ fontFamily: "'Merriweather', serif" }}>
+      <Container className="bodybackground" style={{fontFamily: "'Merriweather', serif"}}>
         <h1 className="fw-bold mt-5">Welcome to the Poetry Page</h1>
 
         <p className="mt-5 fs-5">Welcome to the heart of <span className="fw-bold">The Poetry Collection</span>, where every visit brings you into conversation with a new voice, a new rhythm, a new way of seeing the world Here, poems are presented with care - complete with their title, content, and author — so you can explore them fully and at your own pace. Whether you're searching for inspiration, hoping to discover a poet you've never read before, are eager to react to a piece, or simply taking a moment to breathe with language, this page is designed to guide you through that experience. React, reflect, revisit, and let each poem meet you exactly where you are.</p>

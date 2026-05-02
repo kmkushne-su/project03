@@ -16,6 +16,7 @@ import './App.css'
 // For my Project, I decided that The Poetry Collective React Project will use Bootstrap for CSS! */}
 // For Reference: React Bootstrap Guide (https://react-bootstrap.netlify.app/docs/getting-started/introduction) */}
 // Multiple Pages Reference: https://github.com/JDScharf/tessa-site/blob/main/src/App.jsx */}
+// Papaparse Reference and User Guide: https://www.papaparse.com/ */}
 
 function App() {
   return (
@@ -25,14 +26,14 @@ function App() {
             <Container className="align-items-center">
                 <Navbar.Brand as={Link} to="/home" className="fw-bold text-decoration-underline d-flex align-items-center">
                     <img src={logo} width="40" height="40" className="align-top m-1" alt="Logo" />
-                    <span className="ms-2" style={{ fontFamily: "'Merriweather', serif" }}> The Poetry Collection </span>
+                    <span className="ms-2" style={{fontFamily: "'Merriweather', serif"}}> The Poetry Collection </span>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ms-auto">
-                    <Nav.Link as={Link} to="/home" style={{ fontFamily: "'Merriweather', serif" }}>Home</Nav.Link>
-                    <Nav.Link as={Link} to="/poetry" style={{ fontFamily: "'Merriweather', serif" }}>Poetry</Nav.Link>
-                    <Nav.Link as={Link} to="/about" style={{ fontFamily: "'Merriweather', serif" }}>About</Nav.Link>
+                    <Nav.Link as={Link} to="/home" style={{fontFamily: "'Merriweather', serif"}}>Home</Nav.Link>
+                    <Nav.Link as={Link} to="/poetry" style={{fontFamily: "'Merriweather', serif"}}>Poetry</Nav.Link>
+                    <Nav.Link as={Link} to="/about" style={{fontFamily: "'Merriweather', serif"}}>About</Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>

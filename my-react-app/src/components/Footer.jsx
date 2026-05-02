@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Footer() {
     return (
-        <footer className="bg-dark text-white mt-3 p-4" style={{ fontFamily: "'Merriweather', serif" }}>
+        <footer className="bg-dark text-white mt-3 p-4" style={{fontFamily: "'Merriweather', serif"}}>
             <Container>
             <div className="text-center py-2">
                 &copy; Copyright Kaitlyn Kushner 2026
