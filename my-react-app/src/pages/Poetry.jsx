@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-// Reference for "useEffect": https://react.dev/reference/react/useEffect (i.e. this is how i used an external system)
+// Reference for "useEffect": https://react.dev/reference/react/useEffect (i.e. this is how i used an external system i think)
 import Papa from "papaparse";
 // Recommendation from Scharf for Email: use "PapaParse!"
 import {Container, Button, Card, Form} from "react-bootstrap";
@@ -17,7 +17,8 @@ function PoetryAPI() {
   useEffect(() => {
     fetch("../public/PoetryFoundationData.csv")
 // Res vs. Response vs. Result: https://developer.mozilla.org/en-US/docs/Web/API/Response/text
-// Using PapaParse: https://www.papaparse.com/ !!!
+// Using PapaParse: https://www.papaparse.com/ !!! + CSV to JSON Configuration Options: https://www.papaparse.com/docs#csv-to-json
+// Understand CSV to Text (even though this is for Python...): https://www.geeksforgeeks.org/python/response-text-python-requests/
       .then((res) => res.text())
       .then((csvText) => {
         const result = Papa.parse(csvText, {
@@ -28,6 +29,7 @@ function PoetryAPI() {
       });
   }, []);
 
+// Understanding how to get the full "area" of intended file: https://stackoverflow.com/questions/43267033/understanding-the-use-of-math-floor-when-randomly-accessing-an-array
   const pickRandomRow = () => {
     setRandomRow(data[Math.floor(Math.random() * data.length)]);
   };
@@ -94,7 +96,7 @@ function PoetryAPI() {
                 placeholder="yourname@example.com"
                 required
                 value={email}
-// Changing input based on user input from the textbox field: https://www.w3schools.com/react/react_forms.asp + https://react.dev/reference/react-dom/components/input
+// Changing input based on user input from the textbox field!! : https://www.w3schools.com/react/react_forms.asp + https://react.dev/reference/react-dom/components/input
                 onChange={(e) => setEmail(e.target.value)}
                 className="text-center"
               />
